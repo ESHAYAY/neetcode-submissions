@@ -1,0 +1,13 @@
+from collections import defaultdict
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        seen = set()
+        for i in range(0, len(nums)):
+            if nums[i] in seen:
+                return True
+            else:
+                seen.add(nums[i])
+            if len(seen)>k:
+                seen.remove(nums[i-k])
+        return False
+            
